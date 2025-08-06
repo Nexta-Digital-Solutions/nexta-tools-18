@@ -11,6 +11,6 @@
     'author': "NextaDS",
     'website': "https://www.nextads.es",
     'category': 'Uncategorized',
-    'version': '16.0.0.2',
+    'version': '18.0.0.2',
     'depends': ['web']
 }
