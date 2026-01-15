@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem parent="od_api_connector.menu_api_connector_module" name="Logger" id="api_logger" action="base.ir_logging_all_act" />
+
+</odoo>
