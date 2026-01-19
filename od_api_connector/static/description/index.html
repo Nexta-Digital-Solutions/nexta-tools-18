@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Odoo Dynamic API & Webhook Manager</title>
+      <link rel="stylesheet"
+         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+      <link rel="stylesheet"
+         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script
+         src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script
+         src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script
+         src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+   </head>
+   <body>
+      <div class="container py-5" style="font-family: 'Segoe UI', sans-serif; padding-top: 48px; padding-bottom: 48px; margin-left: auto; margin-right: auto; width: 90%; max-width: 1140px;">
+
+         <section id="heading">
+            <div class="mb-5" style="margin-bottom: 48px;">
+               <div class="row align-items-center" style="display: flex; align-items: center;">
+                  <div class="col-8 text-left" style="width: 66.666667%; text-align: left;">
+                     <div class="col-md-6 col-6">
+                       <img src="odritech.png" class="w-100" style="max-width: 100%; height: auto;">
+                     </div>
+                  </div>
+                  <div class="col-4 text-right" style="width: 33.333333%; text-align: right;">
+                     <div class="d-flex align-items-center" style="display: flex; align-items: center; justify-content: flex-end;">
+                        <img src="odoo_community_member.png" class="w-100" style="max-width: 100%; height: auto;">
+                     </div>
+                  </div>
+               </div>
+               <div class="d-flex justify-content-center" style="display: flex; justify-content: center;">
+                  <span class="btn btn-custom" style="background-color: #0080FF; border-color: #0080FF; color: white; padding: 6px 12px; border-radius: 0.25rem !important; font-size: 1rem; line-height: 1.5; display: inline-block; text-align: center; vertical-align: middle; cursor: default;">
+                      <i class="fa fa-check mr-2" style="margin-right: 8px;"></i>Community
+                  </span>
+                  <span class="btn btn-custom ml-2" style="background-color: #0080FF; border-color: #0080FF; color: white; padding: 6px 12px; border-radius: 0.25rem !important; font-size: 1rem; line-height: 1.5; display: inline-block; text-align: center; vertical-align: middle; cursor: default; margin-left: 8px;">
+                      <i class="fa fa-check mr-2" style="margin-right: 8px;"></i>Enterprise
+                  </span>
+               </div>
+            </div>
+         </section>
+      
+         <section>
+            <div class="text-center mb-5" style="text-align: center; margin-bottom: 48px;">
+               <h1 class="font-weight-bold mb-3" style="font-weight: bold; margin-bottom: 16px; color: #0080FF;">Odoo API Connector</h1>
+               <img src="heading.png" alt="heading" class="mb-3" style="margin-bottom: 16px;">
+               <p class="" style="font-size: 18px; color: #212121;">
+                  This module is base module for <b><a style="color:black;" href="https://apps.odoo.com/apps/modules/18.0/od_api_request_handler" target="_blank">Odoo Dynamic API & Webhook Manager</a></b>.
+               </p>
+            </div>
+         </section>
+
+         <p class="" style="font-size: 18px; color: red;">
+          Note: Below features only works when you have <b><a style="color:red;" href="https://apps.odoo.com/apps/modules/18.0/od_api_request_handler" target="_blank">Odoo Dynamic API & Webhook Manager</a></b> module.
+         </p>
+         <section class="mb-5" style="margin-bottom: 48px;">
+            <div class="text-center mb-4" style="text-align: center; margin-bottom: 24px;">
+               <h2 class="font-weight-bold text-primary" style="font-weight: bold; color: #0080FF !important;">Features</h2>
+               <img src="heading.png" alt="heading" style="max-width: 100%; height: auto;">
+            </div>
+            <ul class="list-unstyled" style="list-style: none; padding: 0;">
+               <li class="feature-item shadow" style="padding: 20px; margin-bottom: 20px; font-size: 16px; color: #212121; font-weight: 600; letter-spacing: 1px; border-radius: 0.25rem !important; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                  <span class="fa fa-arrow-right feature-icon" style="color: #0080FF; font-weight: 600; font-size: 18px; padding-right: 10px;"></span>
+                  🔄 Manage Odoo through APIs — Create, Update, Search, Count, Copy, and Delete records using secure API requests from another system.
+               </li>
+               <li class="feature-item shadow" style="padding: 20px; margin-bottom: 20px; font-size: 16px; color: #212121; font-weight: 600; letter-spacing: 1px; border-radius: 0.25rem !important; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                  <span class="fa fa-arrow-right feature-icon" style="color: #0080FF; font-weight: 600; font-size: 18px; padding-right: 10px;"></span>
+                  ⚡ Customizable Payload & Response — Easily adapt the request and response structure to match the requirements of your external systems.
+               </li>
+               <li class="feature-item shadow" style="padding: 20px; margin-bottom: 20px; font-size: 16px; color: #212121; font-weight: 600; letter-spacing: 1px; border-radius: 0.25rem !important; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                  <span class="fa fa-arrow-right feature-icon" style="color: #0080FF; font-weight: 600; font-size: 18px; padding-right: 10px;"></span>
+                  🛠 Run Server Actions Remotely — Trigger Odoo server actions from another system to execute custom code or perform any operations.
+               </li>
+               <li class="feature-item shadow" style="padding: 20px; margin-bottom: 20px; font-size: 16px; color: #212121; font-weight: 600; letter-spacing: 1px; border-radius: 0.25rem !important; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                  <span class="fa fa-arrow-right feature-icon" style="color: #0080FF; font-weight: 600; font-size: 18px; padding-right: 10px;"></span>
+                  🌐 Dynamic Endpoint Handling — Define, manage, and process API endpoints dynamically with minimal setup.
+               </li>
+               <li class="feature-item shadow" style="padding: 20px; margin-bottom: 20px; font-size: 16px; color: #212121; font-weight: 600; letter-spacing: 1px; border-radius: 0.25rem !important; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                  <span class="fa fa-arrow-right feature-icon" style="color: #0080FF; font-weight: 600; font-size: 18px; padding-right: 10px;"></span>
+                  🖥 User-Friendly Interface — Configure API handlers and map responses effortlessly through an intuitive Odoo interface.
+               </li>
+               <li class="feature-item shadow" style="padding: 20px; margin-bottom: 20px; font-size: 16px; color: #212121; font-weight: 600; letter-spacing: 1px; border-radius: 0.25rem !important; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                  <span class="fa fa-arrow-right feature-icon" style="color: #0080FF; font-weight: 600; font-size: 18px; padding-right: 10px;"></span>
+                  📝 Configurable loggers — capable of recording every request and its corresponding response.
+               </li>
+            </ul>
+         </section>
+
+         <section class="mb-5" style="margin-bottom: 48px;">
+            <ul class="list-unstyled" style="list-style: none; padding: 0;">
+               <li class="feature-item shadow text-center" style="padding: 20px; margin-bottom: 20px; font-size: 15px; color: #212121; font-weight: 600; letter-spacing: 1px; border-radius: 0.25rem !important; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); text-align: center;">
+                  For free demo contact us on email <b class="primary-color text-break" style="color: #0080FF !important; word-break: break-all;"><a class="primary-color text-break" style="color: #0080FF !important; word-break: break-all;" href="mailto:odritechsolutions@gmail.com" target="_blank">odritechsolutions@gmail.com</a></b>
+               </li>
+            </ul>
+         </section>
+      
+         <section class="pt-4 pb-4" style="padding-top: 16px; padding-bottom: 16px;">
+            <div class="row text-center" style="display: flex; flex-wrap: wrap; gap: 10px; text-align: center;">
+               <div class="col-12 col-md-4 mb-2 text-danger" style="flex: 1 1 200px; padding-right: 15px; padding-left: 15px; margin-bottom: 16px;">
+                  <a class="btn btn-social btn-youtube"
+                     href="https://www.youtube.com/playlist?list=PLFWwGZArKfBs6nwCaRGd5z_Gax8OSwwBO" target="_blank"
+                     style=" font-weight: bold; width: 100%; border-width: 1px; border-style: solid; border-radius: 0.25rem !important; padding: 15px; display: flex; justify-content: center; align-items: center; margin-bottom: 10px; color: white; text-decoration: none; background-color: #d23f3a; border-color: #d23f3a;">
+                     <span class="fa fa-youtube-play text-youtube mr-3" style="font-size: 22px; color:white !important; margin-right: 10px;"></span> Youtube
+                  </a>
+               </div>
+               <div class="col-12 col-md-4 mb-2" style="flex: 1 1 200px; padding-right: 15px; padding-left: 15px; margin-bottom: 16px;">
+                  <a class="btn btn-social btn-linkedin"
+                     href="https://www.linkedin.com/company/odritech-solutions" target="_blank"
+                     style="font-weight: bold; width: 100%; border-width: 1px; border-style: solid; border-radius: 0.25rem !important; padding: 15px; display: flex; justify-content: center; align-items: center; margin-bottom: 10px; color: white; text-decoration: none; background-color: #0077B5; border-color: #0077B5;">
+                     <span class="fa fa-linkedin mr-3" style="font-size: 20px; margin-right: 10px;"></span> LinkedIn
+                  </a>
+               </div>
+               <div class="col-12 col-md-4 mb-2" style="flex: 1 1 200px; padding-right: 15px; padding-left: 15px; margin-bottom: 16px;">
+                  <a class="btn btn-social btn-email"
+                     href="mailto:odritechsolutions@gmail.com" target="_blank"
+                     style="font-weight: bold; width: 100%; border-width: 1px; border-style: solid; border-radius: 0.25rem !important; padding: 15px; display: flex; justify-content: center; align-items: center; margin-bottom: 10px; color: white; text-decoration: none; background-color: #ce493b; border-color: #ce493b;">
+                     <span class="fa fa-envelope mr-3" style="font-size: 20px; margin-right: 10px;"></span> Email
+                  </a>
+               </div>
+            </div>
+         </section>
+      </div>
+   </body>
+</html>
