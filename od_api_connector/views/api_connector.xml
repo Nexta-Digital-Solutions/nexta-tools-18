@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_api_connector_module" name="API Connector" sequence="200" web_icon="od_api_connector,static/description/icon.png" groups="base.group_system"/>
+
+    <menuitem id="menuitem_api_logger" name="Requests Logger" parent="menu_api_connector_module" sequence="5"/>
+
+</odoo>
