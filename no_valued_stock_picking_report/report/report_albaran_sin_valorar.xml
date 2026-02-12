@@ -46,16 +46,16 @@
                                             </span>
                                         </div>
                                         <div t-if="partner" name="partner_header">
-                                            <t t-if="1!=1">
+                                            <t>
                                                 <div t-field="partner.self"
-                                                     t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>
+                                                     t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>
                                             </t>
-                                            <br/>
+                                            <!--<br/>
                                             <span t-field="partner.sudo().city"/>
                                             <span t-field="partner.sudo().state_id"/>
                                             <span t-field="partner.sudo().zip"/>
                                             <span t-field="partner.sudo().street"/>
-                                            <br/>
+                                            <br/>-->
                                             <t t-if="partner.sudo().ref">
                                                 <span>Referencia:</span>
                                                 <span t-esc="partner.sudo().ref"/>
@@ -67,32 +67,27 @@
                                         </div>
                                     </div>
                                 </div>
-                                <h2>
+                                <h2 style="color: #2e6ca4">
+                                    Albarán
                                     <span t-field="o.name"/>
                                 </h2>
-                                <div class="row mt32 mb32">
-                                    <div t-if="o.origin" class="col-auto" name="div_origin">
-                                        <strong>Order:</strong>
-                                        <p t-field="o.origin"/>
+                                <div class="oe_structure"/>
+                                <div id="informations" class="report-wrapping-flexbox clearfix row mb-4">
+                                    <div t-if="o.origin" class="col col-3 mw-100 mb-2" name="div_origin">
+                                        <strong>Order</strong>
+                                        <div t-field="o.origin" class="m-0">S0001</div>
                                     </div>
-                                    <div t-if="o.state" class="col-auto" name="div_sched_date">
-                                        <strong>Shipping Date:</strong>
-                                        <t t-if="o.state == 'done'">
-                                            <p t-field="o.date_done"/>
-                                        </t>
-                                        <t t-if="o.state != 'done'">
-                                            <p t-field="o.scheduled_date"/>
-                                        </t>
+                                    <div t-if="o.state" class="col col-3 mw-100 mb-2" name="div_sched_date">
+                                        <strong>Shipping Date</strong>
+                                        <div t-if="o.state == 'done'" t-field="o.date_done" class="m-0"/>
+                                        <div t-else="" t-field="o.scheduled_date" class="m-0"/>
                                     </div>
                                 </div>
-                                <table class="table table-sm" t-if="o.state!='done'" name="stock_move_table">
+                                <table class="table table-borderless" t-if="o.state!='done'" name="stock_move_table">
                                     <thead>
                                         <tr>
                                             <th name="th_sm_product" class="text-start">
                                                 <strong>Product</strong>
-                                            </th>
-                                            <th name="th_sm_ordered" class="text-start">
-                                                <strong>Ordered</strong>
                                             </th>
                                             <th name="th_sm_quantity" class="text-start">
                                                 <strong>Delivered</strong>
@@ -103,7 +98,15 @@
                                         <t t-set="lines" t-value="o.move_ids.filtered(lambda x: x.product_uom_qty)"/>
                                         <tr t-foreach="lines" t-as="move">
                                             <td>
-                                                <t t-if="move.sale_line_id">
+                                                <t t-set="so_lines" t-value="o.sale_id.order_line.filtered(lambda x: x.display_type=='line_note')"/>
+                                                <t t-if="so_lines">
+                                                    <tr t-foreach="so_lines" t-as="so_line" name="so_lines" class="text-start">
+                                                        <td colspan="99" name="td_so_line">
+                                                            <span t-field="so_line.name"/>
+                                                        </td>
+                                                    </tr>
+                                                </t>
+                                                <t t-elif="move.sale_line_id">
                                                     <span t-field="move.sale_line_id.name"/>
                                                 </t>
                                                 <t t-else="">
@@ -113,9 +116,6 @@
                                                     </p>
                                                 </t>
                                             </td>
-                                            <td name="td_product_qty">
-                                                <span t-field="move.product_uom_qty"/>
-                                            </td>
                                             <td name="td_product_qty_done">
                                                 <span t-field="move.quantity_done"/>
                                             </td>
@@ -123,7 +123,7 @@
                                     </tbody>
                                 </table>
 
-                                <table class="table table-sm mt48" t-if="o.move_line_ids and o.state=='done'"
+                                <table class="table table-borderless" t-if="o.move_line_ids and o.state=='done'"
                                        name="stock_move_line_table">
                                     <t t-set="has_serial_number" t-value="False"/>
                                     <t t-set="has_serial_number" t-value="o.move_line_ids.mapped('lot_id')"
@@ -138,14 +138,10 @@
                                                     Lot/Serial Number
                                                 </th>
                                             </t>
-                                            <th name="th_sml_qty_ordered" class="text-center"
-                                                t-if="not has_serial_number">
-                                                <strong>Ordered</strong>
-                                            </th>
                                             <th name="th_sml_quantity" class="text-center">
                                                 <strong>Delivered</strong>
                                             </th>
-                                        </tr>
+                                         </tr>
                                     </thead>
                                     <tbody>
                                         <!-- This part gets complicated with different use cases (additional use cases in extensions of this report):
@@ -215,7 +211,7 @@
                                     <p class="mt-5">
                                         <span>Remaining quantities not yet delivered:</span>
                                     </p>
-                                    <table class="table table-sm" name="stock_backorder_table"
+                                    <table class="table table-borderless" name="stock_backorder_table"
                                            style="table-layout: fixed;">
                                         <thead>
                                             <tr>
@@ -239,7 +235,7 @@
                                                             <span t-field="bo_line.description_picking"/>
                                                         </p>
                                                     </td>
-                                                    <td/>
+
                                                     <td class="text-center w-auto">
                                                         <span t-field="bo_line.product_uom_qty"/>
                                                         <span t-field="bo_line.list_price"/>
