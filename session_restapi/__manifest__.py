@@ -13,4 +13,4 @@
     'category': 'Uncategorized',
     'version': '18.0.0.2',
     'depends': ['web']
-}
+
