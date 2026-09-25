@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_generate_delivery_deca" model="ir.actions.server">
+        <field name="name">Albarán de entrega DeCA</field>
+        <field name="model_id" ref="stock.model_stock_picking"/>
+        <field name="binding_model_id" ref="stock.model_stock_picking"/>
+        <field name="binding_type">report</field>
+        <field name="binding_view_types">form</field>
+        <field name="groups_id" eval="[(4, ref('stock.group_stock_user'))]"/>
+        <field name="state">code</field>
+        <field name="code">
+if records:
+    action = records.action_generate_deca_document()
+        </field>
+    </record>
+
+    <record id="stock_picking_form_deca" model="ir.ui.view">
+        <field name="name">stock.picking.form.deca</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="deca_documents" string="DeCA">
+                    <group string="Datos específicos DeCA">
+                        <group>
+                            <field name="deca_effective_carrier_id"/>
+                            <field name="deca_goods_nature"
+                                   placeholder="Por ejemplo: mobiliario de madera"/>
+                            <field name="shipping_weight"/>
+                            <field name="deca_alternative_magnitude"
+                                   placeholder="Por ejemplo: 10 palés"/>
+                            <field name="deca_special_authorization"/>
+                        </group>
+                        <group>
+                            <field name="deca_vehicle_plate"/>
+                            <field name="deca_trailer_plate"/>
+                            <field name="deca_observations"/>
+                        </group>
+                    </group>
+                    <separator string="Documentos generados"/>
+                    <field name="deca_document_ids" readonly="1">
+                        <list create="0" delete="0">
+                            <field name="version"/>
+                            <field name="state"/>
+                            <field name="generated_at"/>
+                            <field name="access_url" widget="url"/>
+                            <button name="action_open_document"
+                                    string="Descargar"
+                                    type="object"
+                                    icon="fa-download"
+                                    invisible="state != 'final'"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
